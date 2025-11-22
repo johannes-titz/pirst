@@ -3,7 +3,7 @@ Title: Permuted-Isotonic-Regression for State Trace Analysis
 Version: 0.0.0.9000
 Authors@R: c(
     person("Lukas", "Rommel", role = c("aut")),
-    person("Johannes", "Titz", , "johannes.titz@gmail.com", role = c("aut"),
+    person("Johannes", "Titz", , "johannes.titz@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-1102-5719")))
 Description: Non-parametric algorithm based on isotonic regresion to evaluate evidence of a state-trace plot for the hypotheses of a single dimension or two dimensions.
 License: GPL-3
