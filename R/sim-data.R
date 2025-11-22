@@ -105,8 +105,8 @@ pirstsim_rep_sc <- function(nperson,
 #' @param nmeasures Integer. Number of measures per participant. Default is 10.
 #' @param cases Integer. ?? Default is 100.
 #'
-#' @return A data frame containing the simulated STA data with participants,
-#'   conditions, and measures.
+#' @return A data frame containing the simulated STA data. Columns: X, Y,
+#'   Condition, Trace, Measurement, Person
 #'
 #' @examples
 #' # Generate a simple STA dataset with default parameters
