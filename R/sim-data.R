@@ -1,25 +1,25 @@
 # functions for simulating data
 
 # Create Data for a single ST-Plot for one Person
-pirstsim_sc <- function(nperson,      # Number of Points per Condition
+pirstsim_sc <- function(npercon,      # Number of Points per Condition
                         ncons,        # Number of Conditions
                         overlap,      # Points overlapping
                         interactsize, # Single or multiple process model, vector
                         noise,        # Gaussian Noise
                         curve) {      # Linear, Concave, Sigmoid
   ##producing the linear funtion
-  npoints <- nperson * ncons
+  npoints <- npercon * ncons
   Condition <- c()
   for (i in 1:ncons) {
-    Condition <- c(Condition, rep(i, nperson))
+    Condition <- c(Condition, rep(i, npercon))
   }
   p <- overlap
-  M <- matrix(nrow = ncons, ncol = nperson)
+  M <- matrix(nrow = ncons, ncol = npercon)
   # producing the points
   for (i in 1:ncons) {
-    for (j in 1:nperson){
-      M[i, j] <- 0.7 * (j / nperson) + 0.15
-      M[i, j] <- 0.7 * (j / nperson) + 0.15
+    for (j in 1:npercon){
+      M[i, j] <- 0.7 * (j / npercon) + 0.15
+      M[i, j] <- 0.7 * (j / npercon) + 0.15
     }
   }
   X <- c()
@@ -34,7 +34,7 @@ pirstsim_sc <- function(nperson,      # Number of Points per Condition
   }
 
   for (i in 1:npoints) {
-    X[i] <- X[i] + (-0.35 + 0.7 * (Condition[i] - 1) / (correct - 1)) * ((p - 1 / ncons) / nperson)
+    X[i] <- X[i] + (-0.35 + 0.7 * (Condition[i] - 1) / (correct - 1)) * ((p - 1 / ncons) / npercon)
   }
   ## Linear, curve, curve down, sigmoid or mirrored-sigmoid cases
   if (curve == 0) {
@@ -66,14 +66,14 @@ pirstsim_sc <- function(nperson,      # Number of Points per Condition
   Y <- Y + stats::rnorm(npoints, 0, noise)
   X <- X + stats::rnorm(npoints, 0, noise)
   ## Combine to a dataframe
-  Trace <- rep(seq(1, nperson, 1), ncons)
+  Trace <- rep(seq(1, npercon, 1), ncons)
   simdata <- as.data.frame(cbind(X, Y, Condition, Trace))
   simdata
 }
 
 #STEP 2
 #Repeat pirstsim_sc for multiple measures on one Person
-pirstsim_rep_sc <- function(nperson,
+pirstsim_rep_sc <- function(npercon,
                             ncons,
                             overlap,
                             interactsize,
@@ -82,7 +82,7 @@ pirstsim_rep_sc <- function(nperson,
                             nmeasures){
   measurements <- c()
   for (i in 1: nmeasures) {
-    m <- pirstsim_sc(nperson, ncons, overlap, interactsize, noise, curve)
+    m <- pirstsim_sc(npercon, ncons, overlap, interactsize, noise, curve)
     m$Measurement <- rep(i, nrow(m))
     measurements <- rbind(measurements, m)
   }
@@ -95,7 +95,7 @@ pirstsim_rep_sc <- function(nperson,
 #' purposes. The dataset includes multiple participants, multiple conditions,
 #' and multiple measures.
 #'
-#' @param nperson Integer. Number of persons per condition. Default is 4.
+#' @param npercon Integer. Number of persons per condition. Default is 4.
 #' @param ncons Integer. Number of experimental conditions. Default is 2.
 #' @param overlap Numeric. ??
 #' @param interactsize Numeric vector of length 2. ??
@@ -113,10 +113,10 @@ pirstsim_rep_sc <- function(nperson,
 #' sim_data <- pirstsim()
 #'
 #' # Generate a dataset with 5 participants per condition and 3 conditions
-#' sim_data <- pirstsim(nperson = 5, ncons = 3)
+#' sim_data <- pirstsim(npercon = 5, ncons = 3)
 #'
 #' @export
-pirstsim <- function(nperson = 4,
+pirstsim <- function(npercon = 4,
                      ncons = 2,
                      overlap = 1,
                      interactsize = rep(0, ncons),
@@ -130,8 +130,8 @@ pirstsim <- function(nperson = 4,
   }
   exp_simdata <- c()
   for (i in 1:cases) {
-    simdata_part <- pirstsim_rep_sc(nperson, ncons, overlap, interactsize, noise, curve, nmeasures)
-    simdata_part$Person <- c(rep(i, nperson * ncons))
+    simdata_part <- pirstsim_rep_sc(npercon, ncons, overlap, interactsize, noise, curve, nmeasures)
+    simdata_part$Person <- c(rep(i, npercon * ncons))
     exp_simdata <- rbind(exp_simdata, simdata_part)
   }
   exp_simdata
