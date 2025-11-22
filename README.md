@@ -3,6 +3,7 @@
 
 <!-- badges: start -->
 
+[![repostatus](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 <!-- badges: end -->
 
 **Disclaimer**  
