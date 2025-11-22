@@ -95,15 +95,15 @@ pirstsim_rep_sc <- function(npercon,
 #' purposes. The dataset includes multiple participants, multiple conditions,
 #' and multiple measures.
 #'
-#' @param npercon Integer. Number of persons per condition. Default is 4.
+#' @param npercon Integer. Number of data points per condition. Default is 4.
 #' @param ncons Integer. Number of experimental conditions. Default is 2.
 #' @param overlap Numeric. ??
-#' @param interactsize Numeric vector of length 2. ??
+#' @param interactsize Numeric vector of length ... ??
 #' @param noise Numeric. Amount of random noise to add to the measures. Default
 #'   is 0.
 #' @param curve Numeric. ?? Default is 0.
 #' @param nmeasures Integer. Number of measures per participant. Default is 10.
-#' @param cases Integer. ?? Default is 100.
+#' @param cases Integer. Number of cases (participants). Default is 100.
 #'
 #' @return A data frame containing the simulated STA data. Columns: X, Y,
 #'   Condition, Trace, Measurement, Person
