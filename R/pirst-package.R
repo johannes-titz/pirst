@@ -11,5 +11,6 @@
 #' @importFrom Rfast Order
 #' @importFrom stats na.omit
 #' @importFrom stats rnorm
+#' @importFrom utils getFromNamespace
 ## usethis namespace: end
 NULL

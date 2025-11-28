@@ -27,7 +27,11 @@ preorder <- function(data) {
 
 #' Simple cmr version with sorting-algorithm
 #'
+#' @param data currently the default data structure of pirst
 #'
+#' @return same data structure but with CMR values for X and Y
+#'
+#' @export
 easy_cmr <- function(data) {
   data <- preorder(data)
   data$Order <- rep(0, nrow(data))
@@ -79,12 +83,14 @@ easy_cmr <- function(data) {
 
 # wrapper for wrapper of stacmr to call java jCMRx functions
 easy_jCMRx <- function(X, Y) {
+  if (FALSE) stacmr::cmr()  # tricks R CMD check
   d <- vector("list", 2)
   d[[1]]$means <- X
   d[[2]]$means <- Y
   d[[1]]$weights <- diag(nrow = length(X))
   d[[2]]$weights <- diag(nrow = length(Y))
-  res <- stacmr:::jCMRx(d)
+  jCMRx <- utils::getFromNamespace("jCMRx", "stacmr")
+  res <- jCMRx(d)
   res_jCMRx <- res$x[order(res$x[, 1]), ]
   res_jCMRx
 }
