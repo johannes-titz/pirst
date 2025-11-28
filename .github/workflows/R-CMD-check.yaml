@@ -27,7 +27,7 @@ jobs:
 
           - {os: windows-latest, r: 'release'}
           # use 4.0 or 4.1 to check with rtools40's older compiler
-          - {os: windows-latest, r: 'oldrel-4'}
+          - {os: windows-latest, r: 'oldrel-4', arch: 'x64'}
 
           - {os: ubuntu-latest,  r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-latest,  r: 'release'}
@@ -50,14 +50,6 @@ jobs:
           r-version: ${{ matrix.config.r }}
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
-
-      - name: Set up Java and rJava for Windows oldrel
-        if: matrix.config.os == 'windows-latest' && startsWith(matrix.config.r, 'oldrel')
-        run: |
-          # Ensure JAVA_HOME points to 64-bit Java
-          echo "JAVA_HOME=C:\\Program Files\\Java\\jdk-17" >> $GITHUB_ENV
-          # Install rJava from source
-          Rscript -e "install.packages('rJava', type='source')"
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
