@@ -5,7 +5,7 @@
 \title{Create STA Data for Simulations}
 \usage{
 pirstsim(
-  nperson = 4,
+  npercon = 4,
   ncons = 2,
   overlap = 1,
   interactsize = rep(0, ncons),
@@ -16,13 +16,13 @@ pirstsim(
 )
 }
 \arguments{
-\item{nperson}{Integer. Number of persons per condition. Default is 4.}
+\item{npercon}{Integer. Number of data points per condition. Default is 4.}
 
 \item{ncons}{Integer. Number of experimental conditions. Default is 2.}
 
 \item{overlap}{Numeric. ??}
 
-\item{interactsize}{Numeric vector of length 2. ??}
+\item{interactsize}{Numeric vector of length ... ??}
 
 \item{noise}{Numeric. Amount of random noise to add to the measures. Default
 is 0.}
@@ -31,11 +31,11 @@ is 0.}
 
 \item{nmeasures}{Integer. Number of measures per participant. Default is 10.}
 
-\item{cases}{Integer. ?? Default is 100.}
+\item{cases}{Integer. Number of cases (participants). Default is 100.}
 }
 \value{
-A data frame containing the simulated STA data with participants,
-conditions, and measures.
+A data frame containing the simulated STA data. Columns: X, Y,
+Condition, Trace, Measurement, Person
 }
 \description{
 Generates a complete state-trace analysis (STA) dataset for simulation
@@ -47,6 +47,6 @@ and multiple measures.
 sim_data <- pirstsim()
 
 # Generate a dataset with 5 participants per condition and 3 conditions
-sim_data <- pirstsim(nperson = 5, ncons = 3)
+sim_data <- pirstsim(npercon = 5, ncons = 3)
 
 }
