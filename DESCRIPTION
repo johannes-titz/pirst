@@ -17,3 +17,9 @@ Imports:
     monotone,
     Rfast,
     stats
+Suggests: 
+    stacmr (>= 0.0.1),
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Remotes:  
+    github::monotonicity/stacmr
