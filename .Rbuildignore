@@ -4,3 +4,5 @@
 ^README\.Rmd$
 ^clean_bib\.R$
 ^library\.bib$
+^\.github$
+^codecov\.yml$

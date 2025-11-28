@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![repostatus](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![R-CMD-check](https://github.com/johannes-titz/pirst/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/johannes-titz/pirst/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/johannes-titz/pirst/graph/badge.svg)](https://app.codecov.io/gh/johannes-titz/pirst)
 <!-- badges: end -->
 
 **Disclaimer**  
