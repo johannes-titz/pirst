@@ -25,7 +25,9 @@ preorder <- function(data) {
   data
 }
 
-#runs an easy cmr_Version with a sorting-algorithm
+#' Simple cmr version with sorting-algorithm
+#'
+#'
 easy_cmr <- function(data) {
   data <- preorder(data)
   data$Order <- rep(0, nrow(data))
@@ -73,4 +75,16 @@ easy_cmr <- function(data) {
   cmr_dat$X <- isoX
   cmr_dat$Y <- isoY
   cmr_dat
+}
+
+# wrapper for wrapper of stacmr to call java jCMRx functions
+easy_jCMRx <- function(X, Y) {
+  d <- vector("list", 2)
+  d[[1]]$means <- X
+  d[[2]]$means <- Y
+  d[[1]]$weights <- diag(nrow = length(X))
+  d[[2]]$weights <- diag(nrow = length(Y))
+  res <- stacmr:::jCMRx(d)
+  res_jCMRx <- res$x[order(res$x[, 1]), ]
+  res_jCMRx
 }
