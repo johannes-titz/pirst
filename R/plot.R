@@ -30,7 +30,7 @@ st_plot <- function(simdata, xlab = "Variable A", ylab = "Variable B") {
   }
 
   legend(
-    "topright",
+    "topleft",
     legend = cond_levels,
     col = cols,
     pch = 19,
