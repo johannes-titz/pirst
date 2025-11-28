@@ -27,7 +27,7 @@ jobs:
 
           - {os: windows-latest, r: 'release'}
           # use 4.0 or 4.1 to check with rtools40's older compiler
-          - {os: windows-latest, r: 'oldrel-4', arch: 'x64'}
+          - {os: windows-latest, r: 'oldrel-1'}
 
           - {os: ubuntu-latest,  r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-latest,  r: 'release'}
@@ -50,11 +50,6 @@ jobs:
           r-version: ${{ matrix.config.r }}
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
-
-      - name: Ensure 64-bit R on Windows oldrel
-        if: matrix.config.os == 'windows-latest' && startsWith(matrix.config.r, 'oldrel')
-        run: |
-          echo "R_ARCH=x64" >> $GITHUB_ENV
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
