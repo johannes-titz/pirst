@@ -3,7 +3,8 @@
 #' @param xlab Label for the x-axis
 #' @param ylab Label for the y-axis
 #' @export
-st_plot <- function(simdata, xlab = "Variable A", ylab = "Variable B") {
+st_plot <- function(simdata, xlab = "Variable A", ylab = "Variable B",
+                    legend_position = "topleft") {
   # treat third column as factor condition
   Condition <- as.factor(simdata[[3]])
   X <- simdata[[1]]
@@ -30,7 +31,7 @@ st_plot <- function(simdata, xlab = "Variable A", ylab = "Variable B") {
   }
 
   legend(
-    "topleft",
+    legend_position,
     legend = cond_levels,
     col = cols,
     pch = 19,
