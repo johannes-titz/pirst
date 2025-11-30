@@ -2,6 +2,7 @@
 #' @param simdata A data frame with three columns: X variable, Y variable, Condition
 #' @param xlab Label for the x-axis
 #' @param ylab Label for the y-axis
+#' @param legend_position position of legend (base R plotting)
 #' @export
 st_plot <- function(simdata, xlab = "Variable A", ylab = "Variable B",
                     legend_position = "topleft") {

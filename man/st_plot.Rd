@@ -4,7 +4,12 @@
 \alias{st_plot}
 \title{STA plot (base R version)}
 \usage{
-st_plot(simdata, xlab = "Variable A", ylab = "Variable B")
+st_plot(
+  simdata,
+  xlab = "Variable A",
+  ylab = "Variable B",
+  legend_position = "topleft"
+)
 }
 \arguments{
 \item{simdata}{A data frame with three columns: X variable, Y variable, Condition}
@@ -12,6 +17,8 @@ st_plot(simdata, xlab = "Variable A", ylab = "Variable B")
 \item{xlab}{Label for the x-axis}
 
 \item{ylab}{Label for the y-axis}
+
+\item{legend_position}{position of legend (base R plotting)}
 }
 \description{
 STA plot (base R version)
