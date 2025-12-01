@@ -91,6 +91,6 @@ easy_jCMRx <- function(X, Y) {
   d[[2]]$weights <- diag(nrow = length(Y))
   jCMRx <- utils::getFromNamespace("jCMRx", "stacmr")
   res <- jCMRx(d)
-  res_jCMRx <- res$x[order(res$x[, 1]), ]
+  res_jCMRx <- res$x#[order(res$x[, 1]), ]
   res_jCMRx
 }
